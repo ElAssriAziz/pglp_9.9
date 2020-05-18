@@ -1,19 +1,17 @@
 package uvsq.fr.pglp9_9;
 
-public class Triangle {
-	String nom;
-	int x;
-	int y;
-	int base;
-	int hauteur;
+public class Triangle extends Forme {
+	
+	private String nom;
+	private int base;
+	private int hauteur;
 	/**
 	 * Constructeur
-	 * x et y sont les coordonnes du point reference
+	 * 
 	 */
-	public Triangle(String nom,int x,int y,int base,int hauteur) {
+	public Triangle(String nom,PointRef PRef,int base,int hauteur) {
 		this.nom=nom;
-		this.x=x;
-		this.y=y;
+		this.position=PRef;
 		this.base=base;
 		this.hauteur=hauteur;
 	}
@@ -23,11 +21,11 @@ public class Triangle {
 	public String getNom() {
 		return this.nom;
 	}
-	public int getx() {
-		return this.x;
+	public double getx() {
+		return this.position.getx();
 	}
-	public int gety() {
-		return this.y;
+	public double gety() {
+		return this.position.gety();
 	}
 	public int getBase() {
 		return this.base;
@@ -42,17 +40,25 @@ public class Triangle {
 	public void setNom(String n) {
 		 this.nom=n;
 	}
-	public void setx(int x) {
-		 this.x=x;
-	}
-	public void setY(int y) {
-		 this.y=y;
-	}
+	
 	public void setBase(int base) {
 		 this.base=base;
 	}
 	public void setHauteur(int hauteur) {
 		 this.hauteur=hauteur;
+	}
+	public void deplacer() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void dessiner() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String toString() {
+		return "Triangle (" + this.getNom() + "(" + this.position.getx() + "," + this.position.gety() 
+		+ " ), H="+this.getHauteur()+", B="+this.getBase()+")";
 	}
 	
 }

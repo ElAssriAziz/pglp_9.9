@@ -1,19 +1,19 @@
 package uvsq.fr.pglp9_9;
 
-public class Rectangle {
-	String nom;
-	int x;
-	int y;
-	int largeur;
-	int hauteur;
+public class Rectangle extends Forme{
+
+	private static final long serialVersionUID = 3419567554788899839L;
+	private PointRef position ;
+	private String nom;
+	private int largeur;
+	private int hauteur;
 	/**
 	 * Constructeur
-	 * x et y sont les coordonnees du point reference
+	 * 
 	 */
-	public Rectangle(String nom,int x,int y,int largeur,int hauteur) {
+	public Rectangle(String nom,PointRef PRef,int largeur,int hauteur) {
 		this.nom=nom;
-		this.x=x;
-		this.y=y;
+		this.position=PRef;
 		this.largeur=largeur;
 		this.hauteur=hauteur;
 	}
@@ -23,11 +23,11 @@ public class Rectangle {
 	public String getNom() {
 		return this.nom;
 	}
-	public int getx() {
-		return this.x;
+	public double getx() {
+		return this.position.getx();
 	}
-	public int gety() {
-		return this.y;
+	public double gety() {
+		return this.position.gety();
 	}
 	public int getLargeur() {
 		return this.largeur;
@@ -42,17 +42,26 @@ public class Rectangle {
 	public void setNom(String n) {
 		 this.nom=n;
 	}
-	public void setx(int x) {
-		 this.x=x;
-	}
-	public void setY(int y) {
-		 this.y=y;
-	}
+	
 	public void setLargeur(int largeur) {
 		 this.largeur=largeur;
 	}
 	public void setHauteur(int hauteur) {
 		 this.hauteur=hauteur;
 	}
+	public void deplacer() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void dessiner() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String toString() {
+		return "Rectangle (" + this.getNom() + " (" + this.position.getx() + "," + this.position.gety() 
+		+ " ), H = "+this.getHauteur()+", L = "+this.getLargeur()+")";
+	}
+
 	
 }

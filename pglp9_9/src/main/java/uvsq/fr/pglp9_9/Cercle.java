@@ -1,18 +1,19 @@
 package uvsq.fr.pglp9_9;
 
-public class Cercle {
-	String nom;
-	int x;
-	int y;
-	int rayon;
+
+
+public class Cercle extends Forme {
+	
+	
+	private String nom;
+	private int rayon;
 	/**
 	 * Constructeur
 	 * x et y sont les coordonnees du point reference (centre)
 	 */
-	public Cercle(String nom,int x,int y,int rayon) {
+	public Cercle(String nom,PointRef PRef,int rayon) {
 		this.nom=nom;
-		this.x=x;
-		this.y=y;
+		this.position=PRef;
 		this.rayon=rayon;
 	}
 	/**
@@ -21,11 +22,11 @@ public class Cercle {
 	public String getNom() {
 		return this.nom;
 	}
-	public int getx() {
-		return this.x;
+	public double getx() {
+		return this.position.getx();
 	}
-	public int gety() {
-		return this.y;
+	public double gety() {
+		return this.position.gety();
 	}
 	public int getRayon() {
 		return this.rayon;
@@ -37,13 +38,22 @@ public class Cercle {
 	public void setNom(String n) {
 		 this.nom=n;
 	}
-	public void setx(int x) {
-		 this.x=x;
-	}
-	public void setY(int y) {
-		 this.y=y;
-	}
+	
 	public void setRayon(int rayon) {
 		 this.rayon=rayon;
 	}
+	public void deplacer() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void dessiner() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String toString() {
+		return "Cercle (" + this.getNom() + ",centre( " + this.position.getx() + "," + this.position.gety() 
+		+ "), rayon = "+this.getRayon()+" )";
+	}
+	
 }

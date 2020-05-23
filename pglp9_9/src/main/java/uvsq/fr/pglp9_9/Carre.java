@@ -22,13 +22,11 @@ public class Carre extends Forme {
 	/**
 	 * Les getters
 	 */
-	public String getNom() {
-		return this.nom;
-	}
-	public double getx() {
+
+	public int getx() {
 		return this.position.getx();
 	}
-	public double gety() {
+	public int gety() {
 		return this.position.gety();
 	}
 	public int getLargeur() {
@@ -62,7 +60,13 @@ public class Carre extends Forme {
 	}
 	@Override
 	public String toString() {
-		return "Carre (" + this.getNom() + " ,( " + this.position.getx() + "," + this.position.gety() 
-		+ "), Lar = Haut = "+this.getLargeur()+" )";
+		return "Carre (" + this.getNom() + " , Position( " + this.position.getx() + "," + this.position.gety() 
+		+ "), "+this.getLargeur()+" )";
+	}
+	@Override
+	public String getNom() {
+	
+			return this.nom;
+		
 	}
 }

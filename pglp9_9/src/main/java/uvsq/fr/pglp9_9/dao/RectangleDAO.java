@@ -65,7 +65,6 @@ public class RectangleDAO implements DAO<Rectangle> ,Serializable{
 			File[] filesRectangle=repertoire.listFiles();
 
 			for(int j=0;j<filesRectangle.length;j++) {
-				
 				String nomFichier = filesRectangle[j].getName().substring(0,filesRectangle[j].getName().length()-7);
 				if (nomFichier.equals(r.getNom()))
 					{	
@@ -87,31 +86,25 @@ public class RectangleDAO implements DAO<Rectangle> ,Serializable{
 	public void delete(Rectangle t) {
 
 		try {
-			
 			File repertoire = new File("Formes");
 			File[] filesRectangle=repertoire.listFiles();
 			for(int j=0;j<filesRectangle.length;j++) {
-
 				// Enlever l'extention .serial
 				String nomFichier = filesRectangle[j].getName().substring(0,filesRectangle[j].getName().length()-7);
 				System.out.println(nomFichier);
 				if (nomFichier.equals(t.getNom()))
 					{	
 					if(filesRectangle[j].delete()) {
-						System.out.print(filesRectangle[j].getName());
 					System.out.print("\nFichier de rectangle a été bien supprimé !\n");			
 					}else {
 						System.out.print("\nErreur suppression !\n");
 					}
 					}
 					}
-			//	in.close();
-			}	
-			
+			}				
 		catch(Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 
 }

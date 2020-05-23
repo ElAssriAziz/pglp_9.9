@@ -61,24 +61,21 @@ public class CercleDAO implements DAO<Cercle> ,Serializable{
 
 	public Cercle update(Cercle t) {
 		try {
-			File dir = new File("Formes");
-			File[] filesCercle = dir.listFiles(new FilenameFilter() {
-			    public boolean accept(File dir, String name) {
-			        return name.startsWith("Cercle");
-			    }
-			});
+			File repertoire = new File("Formes");
+			File[] filesCercle=repertoire.listFiles();
 			for(int j=0;j<filesCercle.length;j++) {
-				ObjectInputStream in = new ObjectInputStream(new FileInputStream(filesCercle[j]));
-				Cercle elem = (Cercle) in.readObject();
-				if (elem.getNom().equals(t.getNom()))
+				String nomFichier = filesCercle[j].getName().substring(0,filesCercle[j].getName().length()-7);
+				if (nomFichier.equals(t.getNom()))
 					{	
-					this.delete(elem);
-					this.create(t);
+					filesCercle[j].delete();
+					 ObjectOutputStream out = new ObjectOutputStream(
+								new FileOutputStream("Formes/"+t.getNom()+".serial"));
+					out.writeObject(t);
+					out.close();
 					System.out.print("\nCercle a été bien modifié !\n");
-					in.close();
+				
 					return t;  
 					}
-				in.close();
 			}	
 			}
 		catch(Exception e) {

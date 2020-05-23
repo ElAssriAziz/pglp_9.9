@@ -11,17 +11,25 @@ import java.util.Random;
 
 public class Groupe extends Forme{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1977951088758555065L;
 	private final ArrayList<Forme> ListeDeFormes;
 	private String id;
-	public Groupe() {
+	public Groupe(String id) {
 		ListeDeFormes = new ArrayList<Forme>();
 		/*
 		 * Générer une chaine aléatoire pour identifier chhaque groupe
 		 */
-		byte[] array = new byte[7]; // length is bounded by 7
+		byte[] array = new byte[4]; // length is bounded by 7
 	    new Random().nextBytes(array);
 	    String generatedString = new String(array, Charset.forName("UTF-8"));
-	    id=generatedString;
+	    this.id=id;
+	}
+	public Groupe(Groupe g) {
+		this.id=g.id;
+		this.ListeDeFormes=g.ListeDeFormes;
 	}
 	
 	public void addForme(Forme f) {
@@ -60,5 +68,13 @@ public class Groupe extends Forme{
 			chaine+=elem.toString()+"\n";
 		return chaine;
 	}
+	public void setID(String id) {
+		this.id=id;
+	}
+	@Override
+	public String getNom() {
+		return this.getID();
+	}
+	
 
 }

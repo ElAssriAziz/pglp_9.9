@@ -2,7 +2,6 @@ package uvsq.fr.pglp9_9;
 
 public class Rectangle extends Forme{
 
-	private static final long serialVersionUID = 3419567554788899839L;
 	private PointRef position ;
 	private String nom;
 	private int largeur;
@@ -59,8 +58,8 @@ public class Rectangle extends Forme{
 	}
 	@Override
 	public String toString() {
-		return "Rectangle (" + this.getNom() + " (" + this.position.getx() + "," + this.position.gety() 
-		+ " ), H = "+this.getHauteur()+", L = "+this.getLargeur()+")";
+		return "Rectangle (" + this.getNom() + " Position(" + this.position.getx() + "," + this.position.gety() 
+		+ " ), Hauteur = "+this.getHauteur()+", Largeur = "+this.getLargeur()+")";
 	}
 
 	

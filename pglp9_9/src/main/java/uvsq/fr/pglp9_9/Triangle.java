@@ -57,8 +57,8 @@ public class Triangle extends Forme {
 	}
 	@Override
 	public String toString() {
-		return "Triangle (" + this.getNom() + "(" + this.position.getx() + "," + this.position.gety() 
-		+ " ), H="+this.getHauteur()+", B="+this.getBase()+")";
+		return "Triangle (" + this.getNom() + ", Position(" + this.position.getx() + "," + this.position.gety() 
+		+ " ), Base = "+this.getBase() +", Hauteur = "+this.getHauteur()+")";
 	}
 	
 }

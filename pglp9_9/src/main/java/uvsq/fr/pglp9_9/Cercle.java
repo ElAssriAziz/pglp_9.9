@@ -5,6 +5,10 @@ package uvsq.fr.pglp9_9;
 public class Cercle extends Forme {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6933249287310042735L;
 	private String nom;
 	private int rayon;
 	/**
@@ -52,8 +56,8 @@ public class Cercle extends Forme {
 	}
 	@Override
 	public String toString() {
-		return "Cercle (" + this.getNom() + ",centre( " + this.position.getx() + "," + this.position.gety() 
-		+ "), rayon = "+this.getRayon()+" )";
+		return "Cercle (" + this.getNom() + ", Centre( " + this.position.getx() + "," + this.position.gety() 
+		+ "), Rayon = "+this.getRayon()+" )";
 	}
 	
 }

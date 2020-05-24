@@ -17,6 +17,7 @@ public class Creer implements Commande {
 			  forme=new Triangle(f.getNom(),f.getPosition(),((Triangle) f).getBase(),((Triangle) f).getHauteur()); 
 		  }
 		  else  if( f instanceof Rectangle) {
+			 // System.out.println(f.getPosition().getx());
 			  forme=new Rectangle(f.getNom(),f.getPosition(),((Rectangle) f).getLargeur(),((Rectangle) f).getHauteur());
 		  }
 	

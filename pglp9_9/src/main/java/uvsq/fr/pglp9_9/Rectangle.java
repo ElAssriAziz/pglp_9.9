@@ -2,6 +2,10 @@ package uvsq.fr.pglp9_9;
 
 public class Rectangle extends Forme{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 905099489690317204L;
 	private PointRef position ;
 	private String nom;
 	private int largeur;

@@ -33,10 +33,9 @@ public class GroupeDAO implements DAO<Groupe>,Serializable{
 					ObjectInputStream in = new ObjectInputStream(new FileInputStream(filesGroupe[j]));
 					 elem =(Groupe) in.readObject();
 					in.close();
-					System.out.print("\nGroupe "+t+" a été bien trouvé !\n");
 					return elem;  
 					}
-		}	if (!trouve)	System.out.print("\nGroupe "+t+" non trouvé !\n");
+				}
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -49,7 +48,7 @@ public class GroupeDAO implements DAO<Groupe>,Serializable{
 			 ObjectOutputStream out = new ObjectOutputStream(
 						new FileOutputStream("Formes/"+gr.getNom()+".serial"));
 			out.writeObject(gr);
-			System.out.print("\nFichier de groupe a été bien créé !\n");
+			System.out.println("\nFichier de groupe a été bien créé !\n");
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();

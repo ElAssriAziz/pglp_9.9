@@ -2,6 +2,10 @@ package uvsq.fr.pglp9_9;
 
 public class Triangle extends Forme {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9111151419060246745L;
 	private String nom;
 	private int base;
 	private int hauteur;

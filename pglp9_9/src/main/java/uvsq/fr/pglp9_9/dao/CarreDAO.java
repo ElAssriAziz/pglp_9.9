@@ -98,7 +98,6 @@ public class CarreDAO   implements DAO<Carre> ,Serializable{
 			for(int j=0;j<filesCarre.length;j++) {
 				// Enlever l'extention .serial
 				String nomFichier = filesCarre[j].getName().substring(0,filesCarre[j].getName().length()-7);
-				System.out.println(nomFichier);
 				if (nomFichier.equals(t.getNom()))
 					{	
 					if(filesCarre[j].delete()) {

@@ -12,7 +12,7 @@ public class GroupeJDBC implements DAO<Groupe> {
 
 	@Override
 	public Groupe find(String t) {
-
+		 Groupe  gr = new Groupe(t);
 		 try {	
 			 PointRef p = new PointRef(0,0);
 			 String sql1="SELECT * FROM Groupe WHERE id=?;";
@@ -23,7 +23,7 @@ public class GroupeJDBC implements DAO<Groupe> {
 				
 				 if (result1.next()) {
 					 System.out.println("tttt");
-					 Groupe  gr = new Groupe(result1.getString(1));
+					   gr = new Groupe(result1.getString(1));
 				 String sql2="SELECT * FROM Composer WHERE idGroupe=?;";
 				 PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
 				 preparedStatement2.setString(1,t);

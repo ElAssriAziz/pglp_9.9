@@ -34,11 +34,11 @@ public class TriangleDAO implements DAO<Triangle> ,Serializable{
 				ObjectInputStream in = new ObjectInputStream(new FileInputStream(filesTriangle[j]));
 				 elem =(Triangle) in.readObject();
 				in.close();
-				System.out.print("\nFichier de triangle a été bien trouvé !\n");
+				System.out.println("\nFichier de triangle a été bien trouvé !\n");
 				return elem;  
 				}
 	           }
-		if (!trouve)	System.out.print("\nFichier de triangle non trouvé !\n");
+		if (!trouve)	System.out.println("\nFichier de triangle non trouvé !\n");
 			}catch (Exception e) {
 				e.printStackTrace();
 			}			
@@ -89,13 +89,12 @@ public class TriangleDAO implements DAO<Triangle> ,Serializable{
 			for(int j=0;j<filesTriangle.length;j++) {
 				// Enlever l'extention .serial
 				String nomFichier = filesTriangle[j].getName().substring(0,filesTriangle[j].getName().length()-7);
-				System.out.println(nomFichier);
 				if (nomFichier.equals(t.getNom()))
 					{	
 					if(filesTriangle[j].delete()) {
-						System.out.print(filesTriangle[j].getName());
 					System.out.print("\nFichier de Carre a été bien supprimé !\n");			
-					}else {
+					}
+					else {
 						System.out.print("\nErreur suppression !\n");
 					}
 					}

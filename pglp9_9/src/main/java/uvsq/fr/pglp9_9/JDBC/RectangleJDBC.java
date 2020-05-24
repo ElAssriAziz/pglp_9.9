@@ -3,8 +3,7 @@ package uvsq.fr.pglp9_9.JDBC;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import uvsq.fr.pglp9_9.DAO;
 import uvsq.fr.pglp9_9.PointRef;
@@ -81,7 +80,7 @@ public class RectangleJDBC implements DAO<Rectangle>{
 		preparedStatement.setString (1, t.getNom());
 		int rowsAffected = preparedStatement.executeUpdate();
 		  if(rowsAffected == 1)
-			  System.out.println("Rectabgle a été bien supprimé");
+			  System.out.println("Rectangle a été bien supprimé");
 		  preparedStatement.close();
 		}catch (SQLException e) {
 		      e.printStackTrace();

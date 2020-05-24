@@ -2,16 +2,10 @@ package uvsq.fr.pglp9_9;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
@@ -22,7 +16,7 @@ import org.apache.commons.io.FileUtils;
 
 public class ConnectionFactory {
 		 static Connection con=null;
-		// static String connectionString = "jdbc:hsqldb:file:db-data/mydatabase";
+
 		public static  Connection getConnection() {
 			
 			try {
@@ -43,7 +37,7 @@ public class ConnectionFactory {
 				// will create DB if does not exist
 				// "SA" is default user with hypersql
 				con = DriverManager.getConnection(dburl,user,password);
-				System.out.println("DB connection successful to: " + dburl);
+				//System.out.println("DB connection successful to: " + dburl);
 				// creation des tables
 				String createTables =readToString("sql/formes.sql");
 				con.createStatement()

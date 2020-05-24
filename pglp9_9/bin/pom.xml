@@ -14,7 +14,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
 	<maven.compiler.target>1.8</maven.compiler.target>
-	 <main-class>fr.uvsq.pglp9_9.App</main-class>
   </properties>
 
  <build>
@@ -34,12 +33,12 @@
 		<configuration>
 			<archive>
 				<manifest>
-					<mainClass>uvsq.fr.pglp9_9.App</mainClass>
+					<mainClass>fr.uvsq.pglp.App</mainClass>
 				</manifest>
 			</archive>
 		</configuration>
 	</plugin>
-	</plugins>
+	   </plugins>
   </build>
 <reporting>
       <plugins>

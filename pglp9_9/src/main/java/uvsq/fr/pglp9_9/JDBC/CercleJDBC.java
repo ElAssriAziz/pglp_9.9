@@ -77,8 +77,6 @@ public class CercleJDBC implements DAO<Cercle>{
 	public void delete(Cercle t) {
 		try{
 			String sql = "delete from Cercle where nom=?;";
-		
-
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString (1, t.getNom());
 		int rowsAffected = preparedStatement.executeUpdate();

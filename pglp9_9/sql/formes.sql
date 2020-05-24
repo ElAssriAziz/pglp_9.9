@@ -1,11 +1,21 @@
-    create table if not exists Formes (id int primary key, x decimal ,y decimal); 
+	DROP TABLE Cercle IF EXISTS;
+	DROP TABLE Triangle IF EXISTS;
+	DROP TABLE Rectangle IF EXISTS;
+	DROP TABLE Carre IF EXISTS;
+	DROP TABLE Composer IF EXISTS;
+	DROP TABLE Groupe IF EXISTS;
 	
-	create table if not exists Cercle (nom varchar(50) primary key, x decimal ,y decimal,rayon int); 
 	
-	create table if not exists Triangle (nom varchar(50) primary key, x decimal ,y decimal,base int,hauteur int); 
+	create table Cercle (nom varchar(50) primary key, x int ,y int,rayon int); 
 	
-	create table if not exists Rectangle (nom varchar(50) primary key, x decimal ,y decimal,largeur int, hauteur int); 
+	create table Triangle (nom varchar(50) primary key, x int ,y int,base int,hauteur int); 
 	
-	create table if not exists Carre (nom varchar(50) primary key, x decimal ,y decimal, largeur int, hauteur int); 
+	create table Rectangle (nom varchar(50) primary key, x int ,y int,largeur int, hauteur int); 
 	
-	create table if not exists Groupe(id varchar(50) primary key, , x decimal ,y decimal); 
+	create table Carre (nom varchar(50) primary key, x int ,y int, largeur int, hauteur int); 
+	
+	create table  Groupe(id varchar(50) primary key , x int ,y int); 
+	
+	create table Composer(idGroupe varchar(50), nomForme varchar(50), primary key(nomForme,idGroupe),
+              foreign key(idGroupe) references Groupe); 
+	

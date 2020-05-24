@@ -39,12 +39,13 @@ public class CercleJDBC implements DAO<Cercle>{
 			 PreparedStatement preparedStatement =
 				        connection.prepareStatement(sql);
 			 preparedStatement.setString(1,t.getNom());
-			 preparedStatement.setDouble(2,t.getx());
-			 preparedStatement.setDouble(3,t.gety());
+			 preparedStatement.setInt(2,t.getx());
+			 preparedStatement.setInt(3,t.gety());
 			 preparedStatement.setInt(4,t.getRayon());
 			 int result = preparedStatement.executeUpdate();
-		      assert result == 1;
-		      System.out.println("Cercle a été bien inséré dans la base de données");
+		
+		      if (result == 1)
+		    	  System.out.println("Cercle a été bien inséré dans la base de données");
 		      
 		    } catch (SQLException e) {
 		      e.printStackTrace();
@@ -61,8 +62,8 @@ public class CercleJDBC implements DAO<Cercle>{
 		PreparedStatement preparedStatement =
 		        connection.prepareStatement(sql);
 
-		preparedStatement.setDouble(1, t.getx());
-		preparedStatement.setDouble(2, t.gety());
+		preparedStatement.setInt(1, t.getx());
+		preparedStatement.setInt(2, t.gety());
 		preparedStatement.setInt  (3, t.getRayon());
 		preparedStatement.setString  (4, t.getNom());
 		int rowsAffected = preparedStatement.executeUpdate();
@@ -81,8 +82,7 @@ public class CercleJDBC implements DAO<Cercle>{
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString (1, t.getNom());
 		int rowsAffected = preparedStatement.executeUpdate();
-		assert rowsAffected == 1;
-		System.out.println("Cercle a été bien supprimé de la base de données");
+		 if (rowsAffected == 1)System.out.println("Cercle a été bien supprimé de la base de données");
 		}catch (SQLException e) {
 		      e.printStackTrace();
 		    }

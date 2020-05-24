@@ -39,13 +39,13 @@ public class CarreJDBC implements DAO<Carre>{
 			 PreparedStatement preparedStatement =
 				        connection.prepareStatement(sql);
 			 preparedStatement.setString(1,t.getNom());
-			 preparedStatement.setDouble(2,t.getx());
-			 preparedStatement.setDouble(3,t.gety());
+			 preparedStatement.setInt(2,t.getx());
+			 preparedStatement.setInt(3,t.gety());
 			 preparedStatement.setInt(4,t.getLargeur());
 			 preparedStatement.setInt(5,t.getHauteur());
 			 int result = preparedStatement.executeUpdate();
-		      assert result == 1;
-		      System.out.println("Carré a été bien inséré dans la base de données");
+		      if(result == 1) 
+		    	  System.out.println("Carré a été bien inséré dans la base de données");
 		      
 		    } catch (SQLException e) {
 		      e.printStackTrace();
@@ -62,8 +62,8 @@ public class CarreJDBC implements DAO<Carre>{
 		PreparedStatement preparedStatement =
 		        connection.prepareStatement(sql);
 
-		preparedStatement.setDouble(1, t.getx());
-		preparedStatement.setDouble(2, t.gety());
+		preparedStatement.setInt(1, t.getx());
+		preparedStatement.setInt(2, t.gety());
 		preparedStatement.setInt  (3, t.getLargeur());
 		preparedStatement.setString  (4, t.getNom());
 		int rowsAffected = preparedStatement.executeUpdate();
@@ -76,14 +76,11 @@ public class CarreJDBC implements DAO<Carre>{
 
 	public void delete(Carre t) {
 		try{
-			String sql = "delete from Carre where nom=?;";
-		
-
+		String sql = "delete from Carre where nom=?;";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString (1, t.getNom());
 		int rowsAffected = preparedStatement.executeUpdate();
-		assert rowsAffected == 1;
-		System.out.println("Carré a été bien supprimé de la base de données");
+		if(rowsAffected == 1) System.out.println("Carré a été bien supprimé de la base de données");
 		}catch (SQLException e) {
 		      e.printStackTrace();
 		    }

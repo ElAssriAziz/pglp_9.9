@@ -14,14 +14,66 @@ public class GroupeJDBC implements DAO<Groupe> {
 	public Groupe find(String t) {
 
 		 try {	
+			 PointRef p = new PointRef(0,0);
 			 String sql1="SELECT * FROM Groupe WHERE id=?;";
 				 PreparedStatement preparedStatement1 =
 					        connection.prepareStatement(sql1);
 				 preparedStatement1.setString(1,t);
 				 ResultSet result1 = preparedStatement1.executeQuery();
-				 while(result1.next()){
-					 PointRef p=new PointRef(result1.getInt(2),result1.getInt(3));
-					 Groupe gr = new Groupe(result1.getString(1));
+				
+				 if (result1.next()) {
+					 System.out.println("tttt");
+					 Groupe  gr = new Groupe(result1.getString(1));
+				 String sql2="SELECT * FROM Composer WHERE idGroupe=?;";
+				 PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+				 preparedStatement2.setString(1,t);
+				 ResultSet result2 = preparedStatement2.executeQuery();
+				
+				 while(result2.next()){
+					 System.out.println("tttt  tttt");
+					 sql1="SELECT * FROM Cercle WHERE nom=?;"; // recuperer tous les cercles du groupe de BD
+					 preparedStatement1 = connection.prepareStatement(sql1);
+					 preparedStatement1.setString(1,result2.getString(2));
+					  result1 = preparedStatement1.executeQuery();
+				
+					  
+					  if(result1.next()) {
+						   p=new PointRef(result1.getInt(2),result1.getInt(3));
+						  Cercle cer=new Cercle(result2.getString(2),p,result1.getInt(4));
+						  gr.addForme(cer);
+						  System.out.println("cer ajoute");
+					  }
+						 sql1="SELECT * FROM Carre WHERE nom=?;"; // recuperer tous les carrés du groupe de BD
+						 preparedStatement1 = connection.prepareStatement(sql1);
+						 preparedStatement1.setString(1,result2.getString(2));
+						  result1 = preparedStatement1.executeQuery();
+						  if(result1.next()) {
+							   p=new PointRef(result1.getInt(2),result1.getInt(3));
+							   Carre car=new Carre(result2.getString(2),p,result1.getInt(4));
+							  gr.addForme(car);
+							  System.out.println("car ajoute");
+						  }
+						  sql1="SELECT * FROM Triangle WHERE nom=?;"; // recuperer tous les triangles du groupe de BD
+							 preparedStatement1 = connection.prepareStatement(sql1);
+							 preparedStatement1.setString(1,result2.getString(2));
+							  result1 = preparedStatement1.executeQuery();
+							  if(result1.next()) {
+								   p=new PointRef(result1.getInt(2),result1.getInt(3));
+								   Triangle tr=new Triangle(result2.getString(2),p,result1.getInt(4),result1.getInt(5));
+								  gr.addForme(tr);
+								  System.out.println("tr ajoute");
+							  }
+					sql1="SELECT * FROM Rectangle WHERE nom=?;"; // recuperer tous les rectangles du groupe de BD
+				 		preparedStatement1 = connection.prepareStatement(sql1);
+						 preparedStatement1.setString(1,result2.getString(2));
+					  result1 = preparedStatement1.executeQuery();
+							  if(result1.next()) {
+									   p=new PointRef(result1.getInt(2),result1.getInt(3));
+									   Rectangle tr=new Rectangle(result2.getString(2),p,result1.getInt(4),result1.getInt(5));
+									  gr.addForme(tr);
+									  System.out.println("rec ajoute");
+								  }
+				 }
 		    	  System.out.println("Groupe a été bien trouvé dans la base de données");
 		    	  return gr;
 				 }
@@ -41,20 +93,28 @@ public class GroupeJDBC implements DAO<Groupe> {
 				        connection.prepareStatement(sql1);
 			 preparedStatement.setString(1,t.getID());
 			 // la position du groupe est la position de premiere forme composante
-			 preparedStatement.setDouble(2,t.getListeFormes().get(0).getPosition().getx());
-			 preparedStatement.setDouble(3,t.getListeFormes().get(0).getPosition().gety());
+			 preparedStatement.setInt(2,t.getListeFormes().get(0).getPosition().getx());
+			 preparedStatement.setInt(3,t.getListeFormes().get(0).getPosition().gety());
 			 int result1 = preparedStatement.executeUpdate();
-			 String sql2="INSERT INTO Composer VALUES (?,?);";
-			 PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+
+			
+		
 		      if(result1 == 1){
+		    	  System.out.println("Groupe creé !");
 		    	  g.setID(t.getID());
 		    	  for(Forme elem : t.getListeFormes()) {
 			    	  g.addForme(elem);
+			    		 String sql2="INSERT INTO Composer VALUES (?,?);";
+						 PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
 			    	System.out.println(elem.getClass().getSimpleName());
-			    	
-			    	  if( elem instanceof Cercle) {
+			  	  preparedStatement2.setString(1,t.getID());
+		 		  preparedStatement2.setString(2,elem.getNom());
+		 		 int result2 = preparedStatement2.executeUpdate();
+		 		 if (result2==1)System.out.println("Ajouté à composer");
+		    	  }
+			    	 /* if( elem instanceof Cercle) {
 			  DAO<Cercle> CerclejdbcDao = AbstractDaoFactory.getFactory(DaoType.jdbc).getCercleDAO();
-			    		  CerclejdbcDao.create((Cercle) elem);
+			    		  CerclejdbcDao.find(elem.getNom());
 			    		  preparedStatement2.setString(1,t.getID());
 			 			 preparedStatement2.setString(2,elem.getNom());
 			 			int result2 = preparedStatement2.executeUpdate();
@@ -84,9 +144,9 @@ public class GroupeJDBC implements DAO<Groupe> {
 			    		  preparedStatement2.setString(1,t.getID());
 				 		  preparedStatement2.setString(2,((Groupe) elem).getID());
 				 		  int result2 = preparedStatement2.executeUpdate();  
-			    	  }
-		    	  }
-		    	  System.out.println("groupe a été bien inséré dans la base de données");
+			    	  }*/
+		    	  
+		    	  System.out.println("groupe a été bien inséré dans la base de données"); 
 		      }	      
 		    } catch (SQLException e) {
 		      e.printStackTrace();
@@ -110,11 +170,12 @@ public class GroupeJDBC implements DAO<Groupe> {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
 
-		preparedStatement.setString (1, t.getID());
-		preparedStatement.executeUpdate();
 		preparedStatement2.setString (1, t.getID());
 		preparedStatement2.executeUpdate();
-		if(preparedStatement.executeUpdate()==1)
+		preparedStatement.setString (1, t.getID());
+		preparedStatement.executeUpdate();
+		//preparedStatement.executeUpdate()==1
+		if(preparedStatement.executeUpdate()==1 )
 			System.out.println("Groupe a été bien supprimé de la base de données");
 		}catch (SQLException e) {
 		      e.printStackTrace();

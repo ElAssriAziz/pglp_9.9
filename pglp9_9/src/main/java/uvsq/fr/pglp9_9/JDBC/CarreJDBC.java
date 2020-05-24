@@ -3,35 +3,12 @@ package uvsq.fr.pglp9_9.JDBC;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import uvsq.fr.pglp9_9.Carre;
 import uvsq.fr.pglp9_9.DAO;
 import uvsq.fr.pglp9_9.PointRef;
 
 public class CarreJDBC implements DAO<Carre>{
-
-	public List<Carre> getAll() {
-		List<Carre> carres = new ArrayList<Carre>();
-		try { 
-			PreparedStatement pst = connection.prepareStatement("select * from Carre;");
-	        pst.clearParameters();
-	        ResultSet rs = pst.executeQuery();
-	        while(rs.next()){
-	        	PointRef PRef =new PointRef(rs.getDouble(2),rs.getDouble(3));
-	        
-	        	carres.add(new Carre(
-	        			rs.getString(1), 
-	        			PRef,
-	        			rs.getInt(4)
-	        		));
-	        }	
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return carres;
-	}
 
 	public Carre find(String id) {
 		Carre car= new Carre(null,null,0);
@@ -44,7 +21,7 @@ public class CarreJDBC implements DAO<Carre>{
 			 ResultSet result = preparedStatement.executeQuery();
 		      
 			 while(result.next()){
-				  PointRef p=new PointRef(result.getDouble(2),result.getDouble(3));
+				  PointRef p=new PointRef(result.getInt(2),result.getInt(3));
 		    	  car = new Carre(result.getString(1),p,result.getInt(4));
 		    	  System.out.println("Carré a été bien trouvé dans la base de données");		
 		        }
@@ -90,7 +67,7 @@ public class CarreJDBC implements DAO<Carre>{
 		preparedStatement.setInt  (3, t.getLargeur());
 		preparedStatement.setString  (4, t.getNom());
 		int rowsAffected = preparedStatement.executeUpdate();
-		System.out.println("Carré a été bien modifié dans la base de données");
+		if (rowsAffected>0) System.out.println("Carré a été bien modifié dans la base de données");
 		}catch (SQLException e) {
 		      e.printStackTrace();
 		    }

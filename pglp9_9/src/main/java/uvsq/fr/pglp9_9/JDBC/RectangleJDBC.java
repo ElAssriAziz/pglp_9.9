@@ -12,28 +12,6 @@ import uvsq.fr.pglp9_9.Rectangle;
 
 public class RectangleJDBC implements DAO<Rectangle>{
 
-	public List<Rectangle> getAll() {
-		List<Rectangle> rectangles = new ArrayList<Rectangle>();
-		try { 
-			PreparedStatement pst = connection.prepareStatement("select * from Rectangle;");
-	        pst.clearParameters();
-	        ResultSet rs = pst.executeQuery();
-	        while(rs.next()){
-	        	PointRef PRef =new PointRef(rs.getDouble(2),rs.getDouble(3));
-	        
-	        	rectangles.add(new Rectangle(
-	        			rs.getString(1), 
-	        			PRef,
-	        			rs.getInt(4),
-	        			rs.getInt(5)
-	        		));
-	        }	
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rectangles;
-	}
-
 	public Rectangle find(String id) {
 		Rectangle rectangle= new Rectangle(null,null,0,0);
 		 try {
@@ -45,7 +23,7 @@ public class RectangleJDBC implements DAO<Rectangle>{
 			 ResultSet result = preparedStatement.executeQuery();
 		      
 			 while(result.next()){
-				  PointRef p=new PointRef(result.getDouble(2),result.getDouble(3));
+				  PointRef p=new PointRef(result.getInt(2),result.getInt(3));
 				  rectangle = new Rectangle(result.getString(1),p,result.getInt(4),result.getInt(5));
 		    	  System.out.println("rectangle est bien trouvé ");		
 		        }
@@ -91,7 +69,7 @@ public class RectangleJDBC implements DAO<Rectangle>{
 		preparedStatement.setInt  (4, t.getHauteur());
 		preparedStatement.setString  (5, t.getNom());
 		int rowsAffected = preparedStatement.executeUpdate();
-		System.out.println("Ractengle a été bien modifié");
+		if (rowsAffected>0) System.out.println("Ractengle a été bien modifié");
 		}catch (SQLException e) {
 		      e.printStackTrace();
 		    }

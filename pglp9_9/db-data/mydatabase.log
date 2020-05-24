@@ -11,5 +11,5 @@ create table Rectangle (nom varchar(50) primary key, x int ,y int,largeur int, h
 create table Carre (nom varchar(50) primary key, x int ,y int, largeur int, hauteur int)
 create table  Groupe(id varchar(50) primary key , x int ,y int)
 create table Composer(idGroupe varchar(50), nomForme varchar(50), primary key(nomForme,idGroupe),\u000d\u000a              foreign key(idGroupe) references Groupe)
-INSERT INTO CERCLE VALUES('cer2',8,7,4)
+INSERT INTO TRIANGLE VALUES('tri1',4,6,10,45)
 COMMIT

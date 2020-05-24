@@ -4,6 +4,7 @@ import uvsq.fr.pglp9_9.AbstractDaoFactory;
 import uvsq.fr.pglp9_9.Carre;
 import uvsq.fr.pglp9_9.Cercle;
 import uvsq.fr.pglp9_9.DAO;
+import uvsq.fr.pglp9_9.Groupe;
 import uvsq.fr.pglp9_9.Rectangle;
 import uvsq.fr.pglp9_9.Triangle;
 
@@ -27,6 +28,11 @@ public class JdbcDoaFactory extends AbstractDaoFactory{
 	@Override
 	public DAO<Triangle> getTriangleDAO() {
 		return  new TriangleJDBC();
+	}
+
+	@Override
+	public DAO<Groupe> getGroupeDAO() {
+		return new GroupeJDBC(); 
 	}
 
 }

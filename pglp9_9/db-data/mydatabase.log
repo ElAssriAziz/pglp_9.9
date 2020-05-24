@@ -11,5 +11,8 @@ create table Rectangle (nom varchar(50) primary key, x int ,y int,largeur int, h
 create table Carre (nom varchar(50) primary key, x int ,y int, largeur int, hauteur int)
 create table  Groupe(id varchar(50) primary key , x int ,y int)
 create table Composer(idGroupe varchar(50), nomForme varchar(50), primary key(nomForme,idGroupe),\u000d\u000a              foreign key(idGroupe) references Groupe)
-INSERT INTO TRIANGLE VALUES('tri1',4,6,10,45)
+INSERT INTO CARRE VALUES('car',4,7,8,8)
+COMMIT
+DELETE FROM CARRE WHERE NOM='car'
+INSERT INTO CARRE VALUES('car',9,11,0,8)
 COMMIT

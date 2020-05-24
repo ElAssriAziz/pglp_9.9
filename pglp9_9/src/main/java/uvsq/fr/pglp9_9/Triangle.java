@@ -21,10 +21,10 @@ public class Triangle extends Forme {
 	public String getNom() {
 		return this.nom;
 	}
-	public double getx() {
+	public int getx() {
 		return this.position.getx();
 	}
-	public double gety() {
+	public int gety() {
 		return this.position.gety();
 	}
 	public int getBase() {
@@ -47,18 +47,17 @@ public class Triangle extends Forme {
 	public void setHauteur(int hauteur) {
 		 this.hauteur=hauteur;
 	}
-	public void deplacer() {
-		// TODO Auto-generated method stub
-		
+	public void deplacer(int x, int y) {
+		PointRef PointNouveau = new PointRef(this.getx()+x,this.gety()+y);
+		this.position=PointNouveau;
 	}
 	public void dessiner() {
-		// TODO Auto-generated method stub
-		
+		System.out.println(this);
 	}
 	@Override
 	public String toString() {
 		return "Triangle (" + this.getNom() + ", Position(" + this.position.getx() + "," + this.position.gety() 
-		+ " ), Base = "+this.getBase() +", Hauteur = "+this.getHauteur()+")";
+		+ "), Base = "+this.getBase() +", Hauteur = "+this.getHauteur()+")";
 	}
 	
 }

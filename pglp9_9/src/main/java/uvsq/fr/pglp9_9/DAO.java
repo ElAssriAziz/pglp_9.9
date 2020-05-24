@@ -1,7 +1,6 @@
 package uvsq.fr.pglp9_9;
 
 import java.sql.Connection;
-import java.util.List;
 
 public interface DAO<T> {
 	

@@ -50,8 +50,8 @@ public class Carre extends Forme {
 		 this.largeur=larg;
 	}
 	
-	public void deplacer() {
-		PointRef PointNouveau = new PointRef(this.getx(),this.gety());
+	public void deplacer(int x, int y) {
+		PointRef PointNouveau = new PointRef(this.getx()+x,this.gety()+y);
 		this.position=PointNouveau;
 	}
 	public void dessiner() {

@@ -22,10 +22,10 @@ public class Rectangle extends Forme{
 	public String getNom() {
 		return this.nom;
 	}
-	public double getx() {
+	public int getx() {
 		return this.position.getx();
 	}
-	public double gety() {
+	public int gety() {
 		return this.position.gety();
 	}
 	public int getLargeur() {
@@ -48,13 +48,13 @@ public class Rectangle extends Forme{
 	public void setHauteur(int hauteur) {
 		 this.hauteur=hauteur;
 	}
-	public void deplacer() {
-		// TODO Auto-generated method stub
+	public void deplacer(int x, int y) {
+		PointRef PointNouveau = new PointRef(this.getx()+x,this.gety()+y);
+		this.position=PointNouveau;
 		
 	}
 	public void dessiner() {
-		// TODO Auto-generated method stub
-		
+		System.out.println(this);
 	}
 	@Override
 	public String toString() {

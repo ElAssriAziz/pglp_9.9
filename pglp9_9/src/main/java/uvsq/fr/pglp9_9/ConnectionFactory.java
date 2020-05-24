@@ -22,7 +22,7 @@ import org.apache.commons.io.FileUtils;
 
 public class ConnectionFactory {
 		 static Connection con=null;
-		 static String connectionString = "jdbc:hsqldb:file:db-data/mydatabase";
+		// static String connectionString = "jdbc:hsqldb:file:db-data/mydatabase";
 		public static  Connection getConnection() {
 			
 			try {
@@ -44,13 +44,10 @@ public class ConnectionFactory {
 				// "SA" is default user with hypersql
 				con = DriverManager.getConnection(dburl,user,password);
 				System.out.println("DB connection successful to: " + dburl);
-				// create table
-		
-				// create table
+				// creation des tables
 				String createTables =readToString("sql/formes.sql");
 				con.createStatement()
 						.executeUpdate(createTables);
-
 		        
 				} catch (SQLException e) {
 				
@@ -59,7 +56,6 @@ public class ConnectionFactory {
 			
 				e.printStackTrace();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return con;

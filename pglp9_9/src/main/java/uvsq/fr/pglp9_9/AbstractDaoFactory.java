@@ -10,6 +10,7 @@ public abstract class AbstractDaoFactory {
 	public abstract DAO<Cercle> getCercleDAO();
 	public abstract DAO<Rectangle> getRectangleDAO();
 	public abstract DAO<Triangle> getTriangleDAO();
+	public abstract DAO<Groupe> getGroupeDAO();
 	
 	public static AbstractDaoFactory getFactory(DaoType type) {
 		if(type == DaoType.dao) return new DAOFactory();

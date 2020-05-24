@@ -26,10 +26,10 @@ public class Cercle extends Forme {
 	public String getNom() {
 		return this.nom;
 	}
-	public double getx() {
+	public int getx() {
 		return this.position.getx();
 	}
-	public double gety() {
+	public int gety() {
 		return this.position.gety();
 	}
 	public int getRayon() {
@@ -46,18 +46,19 @@ public class Cercle extends Forme {
 	public void setRayon(int rayon) {
 		 this.rayon=rayon;
 	}
-	public void deplacer() {
-		// TODO Auto-generated method stub
-		
-	}
-	public void dessiner() {
-		// TODO Auto-generated method stub
-		
-	}
 	@Override
 	public String toString() {
 		return "Cercle (" + this.getNom() + ", Centre( " + this.position.getx() + "," + this.position.gety() 
 		+ "), Rayon = "+this.getRayon()+" )";
+	}
+	@Override
+	public void deplacer(int x, int y) {
+		PointRef PointNouveau = new PointRef(this.getx()+x,this.gety()+y);
+		this.position=PointNouveau;
+	}
+	@Override
+	public void dessiner() {
+		System.out.println(this);
 	}
 	
 }
